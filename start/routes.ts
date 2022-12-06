@@ -20,10 +20,9 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+// HABILITAR CORS
 Route.group(() => {
-  Route.get('/', async () => {
-    return { hello: 'world' }
-  })
+  Route.resource('/moments', 'MomentsController').apiOnly()
 
-  Route.post('/moments', 'MomentsController.store')
+  Route.post('/moments/:momentId/comments', 'CommentsController.store')
 }).prefix('/api')
